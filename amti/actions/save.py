@@ -106,7 +106,8 @@ def save_batch(
                             f' {assignment_status}.')
 
                         if assignment_status not in ['Approved', 'Rejected']:
-                            raise ValueError(
+                            # raise ValueError(
+                            print(f'CHANGED TO NON-FATAL ERROR: '
                                 f'Assignment (ID: {assignment_id}) has status'
                                 f' "{assignment_status}". In order to save a'
                                 f' batch all assignments must have "Approved"'
@@ -123,6 +124,7 @@ def save_batch(
         shutil.copytree(working_dir, results_dir)
 
     # remove the incomplete file since the batch is now complete
-    os.remove(incomplete_file_path)
+    # HACK: NEVER REMOVE INCOMPLETE FILE ... So we can re-run lots of times
+    # os.remove(incomplete_file_path)
 
     logger.info(f'Saving batch {batch_id} is complete.')
