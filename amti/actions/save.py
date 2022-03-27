@@ -85,7 +85,9 @@ def save_batch(
 
             hit_status = hit['HIT']['HITStatus']
             if hit_status != 'Reviewable':
-                raise ValueError(
+                # raise ValueError(
+                print( f'Non-fatal issue ... '
+                    f'allowing hits to be downloaded before they are finished.'
                     f'HIT (ID: {hit_id}) has status "{hit_status}".'
                     f' In order to save a batch all HITs must have'
                     f' "Reviewable" status.')
